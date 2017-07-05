@@ -1,11 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import HeaderDis from '@/components/HeaderDis'
 import Home from '@/view/Home'
-// import NavDis from './components/NavDis'
-// import ContentDis from './components/ContentDis'
-// import FooterDis from './components/FooterDis'
+import Login from '@/view/Login'
 
 Vue.use(Router)
 
@@ -13,26 +10,50 @@ export default new Router({
   routes: [
     {
       path: '/login',
-      name: 'Hello',
-      component: Hello,
+      name: 'Login',
+      component: Login,
       hidden: true
     }, {
       path: '/',
       name: '登陆/权限',
       component: Home,
       children: [
-        {path: '/superadmin', component: HeaderDis, name: '头文件1'},
-        {path: '/permission', component: HeaderDis, name: '头文件2'},
-        {path: '/record', component: HeaderDis, name: '头文件3'}
+        {path: '/superadmin', component: HeaderDis, name: '超级管理员'},
+        {path: '/permission', component: HeaderDis, name: '分组权限'},
+        {path: '/record', component: HeaderDis, name: '管理员操作记录'}
       ]
     }, {
       path: '/',
       name: '客户管理',
       component: Home,
       children: [
-        {path: '/search', component: HeaderDis, name: '头文件4'},
-        {path: '/permission', component: HeaderDis, name: '头文件5'},
-        {path: '/record', component: HeaderDis, name: '头文件6'}
+        {path: '/search', component: HeaderDis, name: '客户查询'},
+        {path: '/permission', component: HeaderDis, name: '经销商申请审核'},
+        {path: '/record', component: HeaderDis, name: '系统归属变更审核'}
+      ]
+    }, {
+      path: '/',
+      name: '财务管理',
+      component: Home,
+      children: [
+        {path: '/search', component: HeaderDis, name: '经销商账户明细'},
+        {path: '/permission', component: HeaderDis, name: '充值/提现申请审核'}
+      ]
+    }, {
+      path: '/',
+      name: '产品管理',
+      component: Home,
+      children: [
+        {path: '/search', component: HeaderDis, name: '增加/删除产品'},
+        {path: '/permission', component: HeaderDis, name: '产品销售记录'}
+      ]
+    }, {
+      path: '/',
+      name: '超级管理员',
+      component: Home,
+      children: [
+        {path: '/search', component: HeaderDis, name: '参数管理'},
+        {path: '/permission', component: HeaderDis, name: '增加/删除管理员'}
       ]
     }
   ]

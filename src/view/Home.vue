@@ -2,18 +2,27 @@
   <div class="container">
     <el-row class="header">
       <el-col :xs="24" :sm="24" :md="24" :lg="24">
-        <div class="grid-content bg-purple"></div>
-        <div class="grid-content bg-purple"></div>
-        <div class="grid-content bg-purple"></div>
+        <el-col :xs="15" :sm="10" :md="8" :lg="4" class="logo">{{ systemName }}</el-col>
+        <el-col :xs="4" :sm="6" :md="8" :lg="18" class="middle"></el-col>
+        <el-col :xs="4" :sm="6" :md="8" :lg="2">
+          <el-dropdown>
+            <span class="el-dropdown-link userinfo-inner"><img :src="this.sysUserAvatar" /> {{sysUserName}}</span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>个人信息</el-dropdown-item>
+              <el-dropdown-item>设置</el-dropdown-item>
+              <el-dropdown-item>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </el-col>
       </el-col>
     </el-row>
     <el-row class="content">        
       <el-col :xs="15" :sm="10" :md="8" :lg="4" class="content-nav">
         <nav class="navigation">
-          <el-menu default-active="2" class="el-menu-nav" @open="handleOpen" @close="handleClose" theme="dark" unique-opened router>
+          <el-menu default-active="2" class="el-menu-nav" @open="handleOpen" @close="handleClose" unique-opened router>
           <template v-for="(item, index) in $router.options.routes" v-if="!item.hidden">
-            <template slot="title"><i :class="item.iconCls"></i> 导航一</template>
             <el-submenu :index="index+''">
+              <template slot="title">{{ item.name }}</template>
               <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path">{{ child.name }}</el-menu-item>
             </el-submenu>
           </template>       
@@ -30,7 +39,9 @@
 export default {
   data () {
     return {
-      msg: 'Use Vue 2.0 Today!'
+      systemName: 'SYSTEM NAME',
+      sysUserName: '周周',
+      sysUserAvatar: 'https://sfault-avatar.b0.upaiyun.com/365/708/3657089079-593dfed765eca_big64'
     }
   },
 
@@ -66,7 +77,7 @@ body {
 }
 .header {
   height: 65px;
-  background: aliceblue;
+  background: #20a0ff;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -95,6 +106,17 @@ body {
 .info {
   height: 100%;
   overflow-y: scroll;
+}
+.logo {
+  height: 65px;
+  border-right: 1px solid #efeaea;
+  font-size: x-large;
+  text-align: center;
+  line-height: 70px;
+  color: aliceblue;
+}
+.header .middle {
+  height: 65px;
 }
 
 </style>
