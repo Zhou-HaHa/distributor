@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import Mock from './mock/mock'
+import store from './store/index'
+
+Mock.bootstrap()
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
@@ -13,6 +17,7 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

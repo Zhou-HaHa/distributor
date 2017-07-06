@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HeaderDis from '@/components/HeaderDis'
 import Home from '@/view/Home'
-import Login from '@/view/Login'
+import AdminLogin from '@/view/admin/Login'
+import Login from '@/view/user/Login'
 
 Vue.use(Router)
 
@@ -14,11 +15,16 @@ export default new Router({
       component: Login,
       hidden: true
     }, {
+      path: '/adminlogin',
+      name: 'AdminLogin',
+      component: AdminLogin,
+      hidden: true
+    }, {
       path: '/',
       name: '登陆/权限',
       component: Home,
       children: [
-        {path: '/superadmin', component: HeaderDis, name: '超级管理员'},
+        {path: '/superadmin', component: HeaderDis, name: '超级管理员1'},
         {path: '/permission', component: HeaderDis, name: '分组权限'},
         {path: '/record', component: HeaderDis, name: '管理员操作记录'}
       ]

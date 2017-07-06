@@ -16,7 +16,7 @@
         </el-col>
       </el-col>
     </el-row>
-    <el-row class="content">        
+    <el-row class="content">
       <el-col :xs="15" :sm="10" :md="8" :lg="4" class="content-nav">
         <nav class="navigation">
           <el-menu default-active="2" class="el-menu-nav" @open="handleOpen" @close="handleClose" unique-opened router>
